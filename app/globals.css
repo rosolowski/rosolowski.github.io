@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-source-code-pro);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: smaller;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes textShadow {
+  0%,
+  100% {
+    text-shadow: 2px 0 1px rgba(0, 217, 255, 0.3),
+      -2px 0 1px rgba(255, 0, 0, 0.2), 0 0 3px;
+  }
+  50% {
+    text-shadow: 0.5px 0 1px rgba(0, 217, 255, 0.3),
+      -0.5px 0 1px rgba(255, 0, 0, 0.2), 0 0 3px;
+  }
+}
+
+@keyframes boxShadow {
+  0%,
+  100% {
+    box-shadow: 2px 0 2px rgba(0, 217, 255, 0.3),
+      -2px 0 2px rgba(255, 0, 0, 0.2), 0 0 8px rgba(0, 217, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0.5px 0 2px rgba(0, 217, 255, 0.3),
+      -0.5px 0 2px rgba(255, 0, 0, 0.2), 0 0 8px rgba(255, 0, 0, 0.3);
+  }
+}
+
+.crt::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.09),
+      rgba(0, 255, 0, 0.04),
+      rgba(0, 0, 255, 0.09)
+    );
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt {
+  animation: textShadow 1.6s infinite;
+  overflow: hidden;
+}
+
+.code pre {
+  white-space: pre-wrap !important;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.code {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+*::selection {
+  background: #dbdedf !important;
+  color: black !important;
+  text-shadow: none;
+}
+
+.boxShadow {
+  animation: boxShadow 1.6s infinite;
+  will-change: box-shadow;
+}
