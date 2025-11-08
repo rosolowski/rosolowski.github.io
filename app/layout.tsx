@@ -13,8 +13,8 @@ const geistMono = Source_Code_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Adam Rosołowski Personal Page",
-  description: "Frontend Developer & Indie Game Creator",
+  title: "Adam Rosołowski",
+  description: "frontend, game dev, blockchain",
   themeColor: "#030712",
   viewport: {
     width: "device-width",
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen overflow-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen`}
       >
         {children}
       </body>

@@ -55,7 +55,7 @@ body {
 .crt::after {
   content: " ";
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -70,7 +70,7 @@ body {
 .crt::before {
   content: " ";
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -89,17 +89,11 @@ body {
 
 .crt {
   animation: textShadow 1.6s infinite;
-  overflow: hidden;
 }
 
 .code pre {
   white-space: pre-wrap !important;
   word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-.code {
-  max-width: 100%;
   overflow-wrap: break-word;
 }
 
