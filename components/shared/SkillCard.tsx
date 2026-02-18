@@ -11,7 +11,7 @@ export default function SkillCard({ skill }: { skill: Skill }) {
     : undefined;
 
   return (
-    <div className="border-2 border-(--fg) p-3 flex flex-col items-center gap-2 min-w-20 hover:border-brand hover:text-brand cursor-default select-none">
+    <div className="border-2 border-(--fg) p-2 flex flex-col items-center justify-center gap-1.5 aspect-square overflow-hidden hover:border-brand hover:text-brand cursor-default select-none">
       {Icon ? (
         <Icon size={24} />
       ) : (

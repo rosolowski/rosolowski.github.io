@@ -1,18 +1,88 @@
 [
   {
-    "id": "project-01",
-    "title": "PROJECT_01",
-    "description": "Short project description goes here. What it does, what tech you used, why it's interesting.",
-    "url": "#",
-    "screenshot": null,
-    "tags": ["React", "TypeScript"]
+    "id": "void-dungeon",
+    "title": "VOID DUNGEON",
+    "description": "Browser-based multiplayer roguelike with Nest.js backend and Svelte frontend. Dockerized for development and production.",
+    "links": [
+      {
+        "label": "GitHub >>>",
+        "url": "https://github.com/rosolowski/void-dungeon"
+      }
+    ],
+    "screenshot": "/assets/void-dungeon-screen.png",
+    "tags": ["Nest.js", "SvelteKit", "WebSocket", "Docker"]
   },
   {
-    "id": "project-02",
-    "title": "PROJECT_02",
-    "description": "Short project description goes here. What it does, what tech you used, why it's interesting.",
-    "url": "#",
-    "screenshot": null,
-    "tags": ["Solidity", "Ethereum"]
+    "id": "ether-empires",
+    "title": "ETHER EMPIRES",
+    "description": "Web3 strategy game where each player colony is a separate smart contract. Build colonies, manage resources, train units, and engage in PvP combat. Features artwork made with stable diffusion.",
+    "links": [
+      {
+        "label": "GitHub >>>",
+        "url": "https://github.com/rosolowski/ether-empires"
+      }
+    ],
+    "screenshot": "/assets/ether-empires-screen.png",
+    "tags": ["React", "Solidity", "Ethereum", "Hardhat"]
+  },
+  {
+    "id": "iron-flow",
+    "title": "IRON FLOW",
+    "description": "Platformer game playable in browser, created in GDevelop for a Game Jam.",
+    "links": [
+      {
+        "label": "Play >>>",
+        "url": "https://rosolowski.itch.io/iron-flow"
+      }
+    ],
+    "screenshot": "/assets/iron-flow-screen.png",
+    "tags": ["GDevelop", "GameDev"]
+  },
+  {
+    "id": "void-exchange",
+    "title": "VOID EXCHANGE",
+    "description": "Decentralized exchange enabling token swaps and liquidity provision for ERC-20 pairs. Full Solidity smart contracts with React frontend.",
+    "links": [
+      {
+        "label": "GitHub >>>",
+        "url": "https://github.com/rosolowski/void-exchange"
+      }
+    ],
+    "screenshot": "/assets/void-exchange-screen.png",
+    "tags": ["React", "Solidity", "Ethereum", "Hardhat"]
+  },
+  {
+    "id": "cyber-rogue",
+    "title": "CYBER ROGUE",
+    "description": "Prototype of a cyberpunk roguelike playable in the browser. Built with Svelte — game logic connected to components through a reactive store.",
+    "links": [
+      {
+        "label": "Play >>>",
+        "url": "https://rosolowski.github.io/cyber-rogue/play"
+      },
+      {
+        "label": "GitHub >>>",
+        "url": "https://github.com/rosolowski/cyber-rogue"
+      }
+    ],
+    "screenshot": "/assets/cyber-rogue-screen.png",
+    "tags": ["Svelte", "Vite", "JavaScript"]
+  },
+  {
+    "id": "mind-rogue",
+    "title": "MIND ROGUE",
+    "description": "Roguelike dungeon-exploration game built entirely with pure JavaScript. Explore dungeons, defeat monsters, equip items.",
+    "links": [
+      {
+        "label": "Play >>>",
+        "url": "https://rosolowski.github.io/mind-rogue/"
+      },
+      {
+        "label": "GitHub >>>",
+        "url": "https://github.com/rosolowski/mind-rogue"
+      }
+    ],
+    "screenshot": "/assets/mind-rogue-screen.png",
+    "tags": ["JavaScript", "HTML5", "SCSS"]
   }
 ]

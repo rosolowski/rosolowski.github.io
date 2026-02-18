@@ -54,6 +54,33 @@ body {
   }
 }
 
+/* ── Typography ─────────────────────────────────────────────── */
+
+.font-display {
+  filter: contrast(1);
+}
+
+/* ── Photo duotone ──────────────────────────────────────────── */
+
+.photo-duotone {
+  isolation: isolate;
+}
+
+.photo-duotone img {
+  filter: grayscale(1) contrast(1.5);
+}
+
+/* Brand color overlay — multiply maps: shadows→black, highlights→lime */
+.photo-duotone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: #ffffff;
+  mix-blend-mode: multiply;
+}
+
 /* ── Utilities ──────────────────────────────────────────────── */
 
 .code pre {

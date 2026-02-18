@@ -1,9 +1,11 @@
 [
   { "name": "TypeScript", "category": "frontend", "icon": "SiTypescript" },
-  { "name": "React", "category": "frontend", "icon": "SiReact" },
   { "name": "Next.js", "category": "frontend", "icon": "SiNextdotjs" },
+  { "name": "React", "category": "frontend", "icon": "SiReact" },
   { "name": "Vue", "category": "frontend", "icon": "SiVuedotjs" },
+  { "name": "Nuxt", "category": "frontend", "icon": "SiNuxt" },
   { "name": "Angular", "category": "frontend", "icon": "SiAngular" },
+  { "name": "Svelte", "category": "frontend", "icon": "SiSvelte" },
   { "name": "Tailwind CSS", "category": "frontend", "icon": "SiTailwindcss" },
   { "name": "Nest.js", "category": "backend", "icon": "SiNestjs" },
   { "name": "Docker", "category": "backend", "icon": "SiDocker" },
