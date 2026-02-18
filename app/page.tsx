@@ -1,114 +1,166 @@
 import Image from "next/image";
-import pic from "@/app/assets/pic.jpg";
-import Typewriter from "./components/Typewriter";
-import CodeBox from "./components/CodeBox";
-
-const PROFILE = {
-  name: "Adam Rosołowski",
-  occupation: "Frontend Developer",
-  hobbies: [
-    "game dev",
-    "algorithms",
-    "blockchains (mainly Ethereum)",
-    "ai",
-    "workflow improvement",
-    "making this profile page better",
-  ],
-  links: [
-    { url: "https://github.com/rosolowski", label: "github.com/rosolowski" },
-    { url: "https://rosolowski.itch.io", label: "rosolowski.itch.io" },
-    { url: "https://x.com/rosolowski_dev", label: "x.com/rosolowski_dev" },
-  ],
-};
-
-const WELCOME_TEXT = `Hi, my name is Adam!
-check out the links for different places where I share things!`;
+import pic from "@/assets/pic.jpg";
+import SkillCard from "@/components/shared/SkillCard";
+import Typewriter from "@/components/shared/Typewriter";
+import { profile, skills, projects } from "@/lib/content";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-950 text-gray-200 crt font-mono">
-      <div className="flex gap-10 flex-col sm:flex-row items-stretch justify-center p-10">
-        <CodeBox>
-          <div className="flex flex-col justify-start gap-5 min-w-full sm:w-[200px] min-h-[250px]">
-            <Image
-              src={pic}
-              alt="that's me"
-              className="self-center w-[150px] sm:w-[200px] h-auto object-contain"
-              width={150}
-              height={150}
-            />
-            <pre className="code whitespace-pre-wrap wrap-break-word">
-              <Typewriter
-                options={{
-                  strings: WELCOME_TEXT,
-                  speed: 20,
-                  cursor: true,
-                }}
-              />
-            </pre>
+    <main
+      className="min-h-screen"
+    >
+      {/* ── HERO ────────────────────────────────────────────────── */}
+      <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr] border-b-4 border-(--fg)">
+        {/* Left: name + title + links */}
+        <div className="p-8 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-(--fg) flex flex-col justify-between gap-8">
+          <div>
+            <h1 className="font-display leading-none uppercase text-[15vw] md:text-[11vw]">
+              {profile.name.split(" ").map((word, i) => (
+                <span key={i} className={i === 0 ? "text-brand" : ""}>
+                  {word}
+                  <br />
+                </span>
+              ))}
+            </h1>
+            <p className="font-heading text-xl md:text-2xl uppercase tracking-widest mt-4 min-h-7 md:min-h-8">
+              <Typewriter options={{ strings: [profile.occupation], loop: false, speed: 60 }} />
+            </p>
           </div>
-        </CodeBox>
-        <CodeBox>
-          <pre>
-            <span
-              className="text-red-400"
-              style={{ textShadow: "0 0 10px rgba(74, 222, 128, 0.5)" }}
+
+          {/* Social links — filled buttons */}
+          <div className="flex flex-wrap gap-3">
+            {profile.links.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-(--fg) text-(--bg) border-2 border-(--fg) px-4 py-2 font-heading uppercase tracking-widest text-sm hover:bg-brand hover:border-brand hover:text-black"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: photo */}
+        <div className="relative min-h-[85vw] md:min-h-0 overflow-hidden">
+          <Image
+            src={pic}
+            alt="Adam Rosołowski"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+      </section>
+
+      {/* ── ABOUT ───────────────────────────────────────────────── */}
+      <section className="grid grid-cols-1 md:grid-cols-[1fr_3fr] border-b-4 border-(--fg)">
+        {/* Left: label */}
+        <div className="p-8 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-(--fg) flex items-center">
+          <span className="font-display text-6xl md:text-8xl text-brand leading-none">
+            ABOUT
+          </span>
+        </div>
+
+        {/* Right: bio */}
+        <div className="p-8 md:p-16 flex items-center">
+          <p className="font-heading text-xl md:text-2xl tracking-wide leading-snug max-w-prose uppercase">
+            {profile.bio}
+          </p>
+        </div>
+      </section>
+
+      {/* ── STACK ───────────────────────────────────────────────── */}
+      <section className="border-b-4 border-(--fg)">
+        <div className="p-8 md:p-16 border-b-4 border-(--fg)">
+          <h2 className="font-display text-6xl md:text-8xl leading-none">
+            SKILLS
+          </h2>
+        </div>
+        <div className="p-8 md:p-16">
+          <div className="flex flex-wrap gap-3">
+            {skills.map((skill) => (
+              <SkillCard key={skill.name} skill={skill} />
+            ))}
+            <div className="p-3 self-center font-mono opacity-50">
+              ... and more
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROJECTS ────────────────────────────────────────────── */}
+      <section>
+        <div className="p-8 md:p-16 border-b-4 border-(--fg)">
+          <h2 className="font-display text-6xl md:text-8xl leading-none">
+            PROJECTS
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {projects.map((project, i) => (
+            <div
+              key={project.id}
+              className={`border-b-4 border-(--fg) ${
+                i % 2 === 0 ? "md:border-r-4" : ""
+              }`}
             >
-              config
-            </span>
-            {`: {\n  `}
-            <span
-              className="text-yellow-300"
-              style={{ textShadow: "0 0 10px rgba(250, 204, 21, 0.5)" }}
-            >
-              name
-            </span>
-            {`: '${PROFILE.name}',\n  `}
-            <span
-              className="text-yellow-300"
-              style={{ textShadow: "0 0 10px rgba(250, 204, 21, 0.5)" }}
-            >
-              occupation
-            </span>
-            {`: '${PROFILE.occupation}',\n  `}
-            <span
-              className="text-yellow-300"
-              style={{ textShadow: "0 0 10px rgba(250, 204, 21, 0.5)" }}
-            >
-              hobbies
-            </span>
-            {`: [\n`}
-            {PROFILE.hobbies
-              .map(
-                (hobby, i) =>
-                  `    ${hobby}${i < PROFILE.hobbies.length - 1 ? "," : ""}\n`
-              )
-              .join("")}
-            {`  ],\n  `}
-            <span
-              className="text-yellow-300"
-              style={{ textShadow: "0 0 10px rgba(250, 204, 21, 0.5)" }}
-            >
-              links
-            </span>
-            {`: [\n    `}
-            {PROFILE.links.map((link, i) => (
-              <span key={link.url}>
+              {/* Screenshot */}
+              <div className="aspect-video border-b-4 border-(--fg) relative overflow-hidden bg-neutral-900">
+                {/* Project number — absolute overlay, clipped by overflow-hidden */}
+                <div className="absolute bottom-0 left-4 z-10 font-display leading-none select-none pointer-events-none text-brand opacity-20 text-[42vw] md:text-[19vw]">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                {project.screenshot ? (
+                  <Image
+                    src={project.screenshot}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full text-neutral-700">
+                    <span className="font-display text-4xl md:text-6xl">
+                      SCREENSHOT
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Info */}
+              <div className="p-8">
+                <h3 className="font-display text-4xl md:text-5xl mb-3">
+                  {project.title}
+                </h3>
+                <p className="text-sm font-mono mb-4 opacity-70 max-w-sm">
+                  {project.description}
+                </p>
+                {project.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="border border-(--fg) px-2 py-0.5 font-heading uppercase text-xs tracking-wider opacity-60"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <a
-                  href={link.url}
+                  href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline text-gray-200 hover:text-gray-400 active:text-black"
+                  className="inline-block bg-(--fg) text-(--bg) border-2 border-(--fg) px-4 py-2 font-heading uppercase tracking-widest text-sm hover:bg-brand hover:border-brand hover:text-black"
                 >
-                  {link.label}
+                  View project {`>>>`}
                 </a>
-                {i < PROFILE.links.length - 1 && ",\n    "}
-              </span>
-            ))}
-            {`\n  ]\n}`}
-          </pre>
-        </CodeBox>
-      </div>
-    </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

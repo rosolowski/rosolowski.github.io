@@ -1,0 +1,10 @@
+{
+  "name": "Adam Rosołowski",
+  "occupation": "Frontend Developer",
+  "bio": "I build for the web, desktops, mobile, blockchains, and whatever comes next. Interested in game development, algorithms, Ethereum, and using AI to work smarter. Always looking for a new problem to break apart.",
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/rosolowski" },
+    { "label": "itch.io", "url": "https://rosolowski.itch.io" },
+    { "label": "X", "url": "https://x.com/rosolowski_dev" }
+  ]
+}

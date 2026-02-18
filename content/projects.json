@@ -1,0 +1,18 @@
+[
+  {
+    "id": "project-01",
+    "title": "PROJECT_01",
+    "description": "Short project description goes here. What it does, what tech you used, why it's interesting.",
+    "url": "#",
+    "screenshot": null,
+    "tags": ["React", "TypeScript"]
+  },
+  {
+    "id": "project-02",
+    "title": "PROJECT_02",
+    "description": "Short project description goes here. What it does, what tech you used, why it's interesting.",
+    "url": "#",
+    "screenshot": null,
+    "tags": ["Solidity", "Ethereum"]
+  }
+]

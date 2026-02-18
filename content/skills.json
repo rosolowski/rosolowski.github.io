@@ -1,0 +1,15 @@
+[
+  { "name": "TypeScript", "category": "frontend", "icon": "SiTypescript" },
+  { "name": "React", "category": "frontend", "icon": "SiReact" },
+  { "name": "Next.js", "category": "frontend", "icon": "SiNextdotjs" },
+  { "name": "Vue", "category": "frontend", "icon": "SiVuedotjs" },
+  { "name": "Angular", "category": "frontend", "icon": "SiAngular" },
+  { "name": "Tailwind CSS", "category": "frontend", "icon": "SiTailwindcss" },
+  { "name": "Nest.js", "category": "backend", "icon": "SiNestjs" },
+  { "name": "Docker", "category": "backend", "icon": "SiDocker" },
+  { "name": "Git", "category": "backend", "icon": "SiGit" },
+  { "name": "Solidity", "category": "web3", "icon": "SiSolidity" },
+  { "name": "Ethereum", "category": "web3", "icon": "SiEthereum" },
+  { "name": "Godot", "category": "gamedev", "icon": "SiGodotengine" },
+  { "name": "Figma", "category": "design", "icon": "SiFigma" }
+]

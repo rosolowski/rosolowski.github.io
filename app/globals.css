@@ -1,95 +1,60 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* Brand palette */
+  --color-brand: #afff03; /* neon lime */
+
+  /* Font stack */
+  --font-display: var(--font-bebas-neue);
+  --font-heading: var(--font-barlow-condensed);
   --font-mono: var(--font-source-code-pro);
 }
 
+/* ── Theme variables ────────────────────────────────────────── */
+
 :root {
+  --bg: #000000;
+  --fg: #ffffff;
   color-scheme: dark;
 }
 
+[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #000000;
+  color-scheme: light;
+}
+
+html {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--font-mono), monospace;
   font-size: smaller;
 }
 
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes textShadow {
-  0%,
-  100% {
-    text-shadow: 2px 0 1px rgba(0, 217, 255, 0.3),
-      -2px 0 1px rgba(255, 0, 0, 0.2), 0 0 3px;
-  }
-  50% {
-    text-shadow: 0.5px 0 1px rgba(0, 217, 255, 0.3),
-      -0.5px 0 1px rgba(255, 0, 0, 0.2), 0 0 3px;
-  }
-}
+/* ── Animations ─────────────────────────────────────────────── */
 
 @keyframes boxShadow {
   0%,
   100% {
-    box-shadow: 2px 0 2px rgba(0, 217, 255, 0.3),
-      -2px 0 2px rgba(255, 0, 0, 0.2), 0 0 8px rgba(0, 217, 255, 0.3);
+    box-shadow:
+      0 0 6px rgba(175, 255, 3, 0.5),
+      0 0 16px rgba(175, 255, 3, 0.2),
+      inset 0 0 6px rgba(175, 255, 3, 0.05);
   }
   50% {
-    box-shadow: 0.5px 0 2px rgba(0, 217, 255, 0.3),
-      -0.5px 0 2px rgba(255, 0, 0, 0.2), 0 0 8px rgba(255, 0, 0, 0.3);
+    box-shadow:
+      0 0 3px rgba(175, 255, 3, 0.3),
+      0 0 10px rgba(175, 255, 3, 0.1),
+      inset 0 0 3px rgba(175, 255, 3, 0.03);
   }
 }
 
-.crt::after {
-  content: " ";
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(18, 16, 16, 0.1);
-  opacity: 0;
-  z-index: 2;
-  pointer-events: none;
-  animation: flicker 0.15s infinite;
-}
-
-.crt::before {
-  content: " ";
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-    linear-gradient(
-      90deg,
-      rgba(255, 0, 0, 0.09),
-      rgba(0, 255, 0, 0.04),
-      rgba(0, 0, 255, 0.09)
-    );
-  z-index: 2;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
-}
-
-.crt {
-  animation: textShadow 1.6s infinite;
-}
+/* ── Utilities ──────────────────────────────────────────────── */
 
 .code pre {
   white-space: pre-wrap !important;
@@ -98,8 +63,8 @@ body {
 }
 
 *::selection {
-  background: #dbdedf !important;
-  color: black !important;
+  background: #afff03 !important;
+  color: #000000 !important;
   text-shadow: none;
 }
 
