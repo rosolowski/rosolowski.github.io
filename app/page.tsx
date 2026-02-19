@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import pic from "@/assets/pic.png";
 import SkillCard from "@/components/shared/SkillCard";
 import Typewriter from "@/components/shared/Typewriter";
@@ -25,7 +26,8 @@ export default function Home() {
                 options={{
                   strings: [profile.occupation],
                   loop: false,
-                  speed: 60,
+                  speed: 50,
+                  lifeLike: false,
                   cursor: false,
                 }}
               />
@@ -103,13 +105,11 @@ export default function Home() {
             PROJECTS
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-1 bg-(--fg)">
           {projects.map((project, i) => (
             <div
               key={project.id}
-              className={`border-b-4 border-(--fg) ${
-                i % 2 === 0 ? "md:border-r-4" : ""
-              }`}
+              className="border-b-4 border-(--fg) bg-(--bg)"
             >
               {/* Screenshot */}
               <div className="aspect-video border-b-4 border-(--fg) relative overflow-hidden bg-neutral-900">
@@ -170,15 +170,26 @@ export default function Home() {
               </div>
             </div>
           ))}
+          {projects.length % 2 !== 0 && (
+            <div className="hidden md:flex bg-(--bg) items-center justify-center p-16">
+              <span className="font-display text-5xl xl:text-7xl leading-none uppercase opacity-10 select-none text-center">
+                THE NEXT<br />BIG THING
+              </span>
+            </div>
+          )}
         </div>
       </section>
       {/* ── FOOTER ──────────────────────────────────────────────── */}
       <footer className="border-t-4 border-(--fg) relative overflow-hidden">
         <div className="px-8 md:px-16 py-10 md:py-14 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="flex flex-col gap-3">
-            <span className="font-display text-5xl md:text-7xl leading-none">
-              ROSOLOWSKI.DEV
-            </span>
+            <Link
+              href="/"
+              className="font-display text-5xl md:text-7xl leading-none"
+            >
+              ROSOLOWSKI
+              <span className="text-brand">.DEV</span>
+            </Link>
             <div className="flex gap-6">
               {profile.links.map((link) => (
                 <a

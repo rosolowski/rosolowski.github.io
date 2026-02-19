@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
-@theme inline {
+@theme {
   /* Brand palette */
   --color-brand: #afff03; /* neon lime */
+}
 
+@theme inline {
   /* Font stack */
   --font-display: var(--font-bebas-neue);
   --font-heading: var(--font-barlow-condensed);
@@ -21,6 +23,7 @@
 [data-theme="light"] {
   --bg: #ffffff;
   --fg: #000000;
+  --color-brand: #93d70a;
   color-scheme: light;
 }
 
