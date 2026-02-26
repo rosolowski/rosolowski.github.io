@@ -105,11 +105,13 @@ export default function Home() {
             PROJECTS
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-1 bg-(--fg)">
+        <div className="relative grid grid-cols-1 md:grid-cols-2">
+          {/* Column separator — absolutely positioned so it doesn't affect card widths */}
+          <div className="hidden md:block absolute inset-y-0 left-1/2 w-1 bg-(--fg)" />
           {projects.map((project, i) => (
             <div
               key={project.id}
-              className="border-b-4 border-(--fg) bg-(--bg)"
+              className="border-b-4 border-(--fg)"
             >
               {/* Screenshot */}
               <div className="aspect-video border-b-4 border-(--fg) relative overflow-hidden bg-neutral-900">
@@ -171,7 +173,7 @@ export default function Home() {
             </div>
           ))}
           {projects.length % 2 !== 0 && (
-            <div className="hidden md:flex bg-(--bg) items-center justify-center p-16">
+            <div className="hidden md:flex items-center justify-center p-16">
               <span className="font-display text-5xl xl:text-7xl leading-none uppercase opacity-10 select-none text-center">
                 THE NEXT<br />BIG THING
               </span>
