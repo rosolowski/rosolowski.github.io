@@ -37,11 +37,11 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
     // Overlay color = incoming theme background
     overlay.style.backgroundColor = next === "dark" ? "#000000" : "#ffffff";
 
-    // Single continuous sweep: -110% → 110% (linear, full screen covered at midpoint)
+    // Single continuous sweep: -110% → 110%, screen fully covered at midpoint
     overlay.style.transition = `transform ${ANIMATION_TOTAL}ms ease-in-out`;
     overlay.style.transform = "translateX(110%)";
 
-    // Swap theme at midpoint (120ms) — overlay fully covers screen at translateX(0)
+    // Swap theme at midpoint (250ms) — overlay fully covers screen at translateX(0)
     setTimeout(() => applyTheme(next), ANIMATION_TOTAL / 2);
 
     const onSweepEnd = () => {
@@ -62,7 +62,7 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>
-      <ThemeTransition ref={overlayRef} color="#000000" />
+      <ThemeTransition ref={overlayRef} />
       {children}
     </ThemeContext.Provider>
   );

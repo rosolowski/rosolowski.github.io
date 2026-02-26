@@ -115,8 +115,6 @@ export default function Home() {
             >
               {/* Screenshot */}
               <div className="aspect-video border-b-4 border-(--fg) relative overflow-hidden bg-neutral-900">
-                {/* Project number — absolute overlay, clipped by overflow-hidden */}
-                <div className="absolute bottom-0 left-4 z-10 font-display leading-none select-none pointer-events-none text-brand opacity-20 text-[42vw] md:text-[19vw]"></div>
                 {project.screenshot ? (
                   <Image
                     src={project.screenshot}

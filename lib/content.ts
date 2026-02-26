@@ -24,16 +24,11 @@ export interface Skill {
   icon: string | null;
 }
 
-export interface ProjectLink {
-  label: string;
-  url: string;
-}
-
 export interface Project {
   id: string;
   title: string;
   description: string;
-  links: ProjectLink[];
+  links: Link[];
   screenshot: string | null;
   tags: string[];
 }
