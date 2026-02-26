@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Code_Pro, Barlow_Condensed, Bebas_Neue } from "next/font/google";
+import {
+  Source_Code_Pro,
+  Barlow_Condensed,
+  Bebas_Neue,
+} from "next/font/google";
 import ThemeProvider from "@/components/shared/ThemeProvider";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import "./globals.css";
@@ -44,6 +48,20 @@ export default function RootLayout({
     <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-96x96.png"
+          sizes="96x96"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
         className={`${sourceCodePro.variable} ${barlowCondensed.variable} ${bebasNeue.variable} antialiased w-full`}
