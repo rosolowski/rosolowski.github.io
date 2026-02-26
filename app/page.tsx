@@ -107,7 +107,7 @@ export default function Home() {
         </div>
         <div className="relative grid grid-cols-1 md:grid-cols-2">
           {/* Column separator — absolutely positioned so it doesn't affect card widths */}
-          <div className="hidden md:block absolute inset-y-0 left-1/2 w-1 bg-(--fg)" />
+          <div className="hidden md:block absolute inset-y-0 left-1/2 w-1 bg-(--fg) z-10" />
           {projects.map((project, i) => (
             <div
               key={project.id}
