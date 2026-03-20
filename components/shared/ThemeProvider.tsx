@@ -14,11 +14,13 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
 
   // On mount: read persisted theme
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    if (stored) {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    const validTheme: Theme | null =
+      stored === "light" || stored === "dark" ? stored : null;
+    if (validTheme) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setTheme(stored);
-      document.documentElement.setAttribute("data-theme", stored);
+      setTheme(validTheme);
+      document.documentElement.setAttribute("data-theme", validTheme);
     }
   }, []);
 
