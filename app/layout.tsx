@@ -27,7 +27,27 @@ const bebasNeue = Bebas_Neue({
 
 export const metadata: Metadata = {
   title: "Adam Rosołowski",
-  description: "frontend, game dev, blockchain",
+  description:
+    "Frontend developer, indie game dev, and blockchain experimenter. Building interactive systems and prototyping across domains.",
+  metadataBase: new URL("https://rosolowski.dev"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Adam Rosołowski",
+    description:
+      "Frontend developer, indie game dev, and blockchain experimenter. Building interactive systems and prototyping across domains.",
+    url: "https://rosolowski.dev",
+    siteName: "rosolowski.dev",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adam Rosołowski",
+    description:
+      "Frontend developer, indie game dev, and blockchain experimenter.",
+    creator: "@rosolowski_dev",
+  },
 };
 
 export const viewport: Viewport = {
