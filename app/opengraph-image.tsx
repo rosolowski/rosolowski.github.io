@@ -9,12 +9,16 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OGImage() {
-  // Bebas Neue font — fetched at build time
+  // Bebas Neue font — fetched at build time, falls back to sans-serif
   let fontData: ArrayBuffer | null = null;
   try {
-    fontData = await fetch(
+    const res = await fetch(
       "https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXooxW5r.woff2"
-    ).then((res) => res.arrayBuffer());
+    );
+    const ct = res.headers.get("content-type") ?? "";
+    if (res.ok && (ct.includes("font") || ct.includes("octet-stream"))) {
+      fontData = await res.arrayBuffer();
+    }
   } catch {
     // falls back to sans-serif
   }
