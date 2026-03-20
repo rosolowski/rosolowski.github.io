@@ -1,26 +1,29 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import path from "path";
 
-export const alt = "Adam Rosołowski — Frontend Developer";
+export const alt = "Adam Rosołowski";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OGImage() {
-  // Bebas Neue (latin subset) — fetched at build time
+  // Bebas Neue font — fetched at build time
   let fontData: ArrayBuffer | null = null;
   try {
     fontData = await fetch(
       "https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXooxW5r.woff2"
     ).then((res) => res.arrayBuffer());
   } catch {
-    // font unavailable at build time — falls back to sans-serif
+    // falls back to sans-serif
   }
 
-  const display: React.CSSProperties = {
-    fontFamily: fontData ? "'Bebas Neue', sans-serif" : "sans-serif",
-    fontWeight: 400,
-    letterSpacing: "2px",
-    lineHeight: 1,
-  };
+  // Pre-baked grayscale photo (generated once, lives in public/)
+  const picBuffer = readFileSync(
+    path.join(process.cwd(), "public", "og-pic.png")
+  );
+  const picBase64 = `data:image/png;base64,${picBuffer.toString("base64")}`;
+
+  const displayFont = fontData ? "'Bebas Neue', sans-serif" : "sans-serif";
 
   return new ImageResponse(
     (
@@ -30,84 +33,82 @@ export default async function OGImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "72px 80px",
-          position: "relative",
-          overflow: "hidden",
         }}
       >
-        {/* Left lime accent bar */}
+        {/* Left: name */}
         <div
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            bottom: 0,
-            width: 8,
-            background: "#afff03",
-          }}
-        />
-
-        {/* Name block */}
-        <div
-          style={{
+            flex: "0 0 55%",
             display: "flex",
             flexDirection: "column",
-            paddingLeft: 24,
+            justifyContent: "space-between",
+            padding: "64px 56px",
+            borderRight: "8px solid #afff03",
           }}
         >
-          <span style={{ ...display, color: "#afff03", fontSize: 168 }}>
-            ADAM
-          </span>
-          <span style={{ ...display, color: "#ffffff", fontSize: 168 }}>
-            ROSOLOWSKI
-          </span>
-        </div>
-
-        {/* Bottom strip */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 0,
-            paddingLeft: 24,
-          }}
-        >
-          {/* Lime separator line */}
-          <div style={{ width: "100%", height: 4, background: "#afff03", marginBottom: 24 }} />
-
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              flexDirection: "column",
+              lineHeight: 0.9,
             }}
           >
             <span
               style={{
                 color: "#afff03",
-                fontSize: 28,
-                fontFamily: "sans-serif",
-                fontWeight: 600,
-                letterSpacing: "6px",
-                textTransform: "uppercase",
+                fontSize: 156,
+                fontFamily: displayFont,
+                fontWeight: 400,
+                letterSpacing: "2px",
               }}
             >
-              FRONTEND DEVELOPER
+              ADAM
             </span>
             <span
               style={{
                 color: "#ffffff",
-                fontSize: 28,
-                fontFamily: "sans-serif",
-                letterSpacing: "3px",
-                opacity: 0.4,
+                fontSize: 156,
+                fontFamily: displayFont,
+                fontWeight: 400,
+                letterSpacing: "2px",
               }}
             >
-              rosolowski.dev
+              ROSOLOWSKI
             </span>
           </div>
+
+          <span
+            style={{
+              color: "#afff03",
+              fontFamily: "sans-serif",
+              fontSize: 22,
+              letterSpacing: "5px",
+              opacity: 0.6,
+            }}
+          >
+            ROSOLOWSKI.DEV
+          </span>
+        </div>
+
+        {/* Right: B&W photo */}
+        <div
+          style={{
+            flex: "0 0 45%",
+            display: "flex",
+            overflow: "hidden",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={picBase64}
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center top",
+            }}
+          />
         </div>
       </div>
     ),
