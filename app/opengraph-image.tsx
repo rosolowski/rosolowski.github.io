@@ -2,6 +2,8 @@ import { ImageResponse } from "next/og";
 import { readFileSync } from "fs";
 import path from "path";
 
+export const dynamic = "force-static";
+
 export const alt = "Adam Rosołowski";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
