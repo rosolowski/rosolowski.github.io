@@ -1,8 +1,24 @@
-"use client";
+import type { CSSProperties } from "react";
 
-import TypeIt from "typeit-react";
-import { TypeItProps } from "typeit-react";
+interface TypewriterProps {
+  text: string;
+  className?: string;
+}
 
-export default function Typewriter(props: TypeItProps) {
-  return <TypeIt {...props} />;
+type TypewriterStyle = CSSProperties & {
+  "--typewriter-characters": number;
+  "--typewriter-duration": string;
+};
+
+export default function Typewriter({ text, className }: TypewriterProps) {
+  const style: TypewriterStyle = {
+    "--typewriter-characters": Math.max(text.length, 1),
+    "--typewriter-duration": `${Math.max(text.length * 0.08, 1.2)}s`,
+  };
+
+  return (
+    <span className={["typewriter-text", className].filter(Boolean).join(" ")} style={style}>
+      {text}
+    </span>
+  );
 }

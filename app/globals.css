@@ -57,10 +57,28 @@ body {
   }
 }
 
+@keyframes typeReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 /* ── Typography ─────────────────────────────────────────────── */
 
 .font-display {
   filter: contrast(1);
+}
+
+.typewriter-text {
+  display: inline-block;
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  animation:
+    typeReveal var(--typewriter-duration, 1.2s)
+    steps(var(--typewriter-characters, 1)) 120ms forwards;
 }
 
 /* ── Photo duotone ──────────────────────────────────────────── */
@@ -101,4 +119,11 @@ body {
 .boxShadow {
   animation: boxShadow 1.6s infinite;
   will-change: box-shadow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-text {
+    animation: none;
+    clip-path: inset(0 0 0 0);
+  }
 }

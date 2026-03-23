@@ -1,16 +1,80 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import pic from "@/assets/pic.png";
 import SkillCard from "@/components/shared/SkillCard";
 import Typewriter from "@/components/shared/Typewriter";
 import { profile, skills, projects } from "@/lib/content";
 
+type ResponsiveImage = {
+  src: string;
+  srcSet: string;
+  sizes: string;
+  width: number;
+  height: number;
+};
+
+const heroImage: ResponsiveImage = {
+  src: "/assets/pic-1280.webp",
+  srcSet: "/assets/pic-640.webp 640w, /assets/pic-1280.webp 1280w",
+  sizes: "(min-width: 768px) 33vw, 100vw",
+  width: 1280,
+  height: 1280,
+};
+
+const projectImages: Record<string, ResponsiveImage> = {
+  "cyber-rogue": {
+    src: "/assets/cyber-rogue-screen-1440.webp",
+    srcSet:
+      "/assets/cyber-rogue-screen-768.webp 768w, /assets/cyber-rogue-screen-1440.webp 1440w",
+    sizes: "(min-width: 768px) 50vw, 100vw",
+    width: 1440,
+    height: 719,
+  },
+  "ether-empires": {
+    src: "/assets/ether-empires-screen-1440.webp",
+    srcSet:
+      "/assets/ether-empires-screen-768.webp 768w, /assets/ether-empires-screen-1440.webp 1440w",
+    sizes: "(min-width: 768px) 50vw, 100vw",
+    width: 1440,
+    height: 716,
+  },
+  "iron-flow": {
+    src: "/assets/iron-flow-screen-1440.webp",
+    srcSet:
+      "/assets/iron-flow-screen-768.webp 768w, /assets/iron-flow-screen-1440.webp 1440w",
+    sizes: "(min-width: 768px) 50vw, 100vw",
+    width: 1440,
+    height: 834,
+  },
+  "mind-rogue": {
+    src: "/assets/mind-rogue-screen-1440.webp",
+    srcSet:
+      "/assets/mind-rogue-screen-768.webp 768w, /assets/mind-rogue-screen-1440.webp 1440w",
+    sizes: "(min-width: 768px) 50vw, 100vw",
+    width: 1440,
+    height: 716,
+  },
+  "void-dungeon": {
+    src: "/assets/void-dungeon-screen-1440.webp",
+    srcSet:
+      "/assets/void-dungeon-screen-768.webp 768w, /assets/void-dungeon-screen-1440.webp 1440w",
+    sizes: "(min-width: 768px) 50vw, 100vw",
+    width: 1440,
+    height: 688,
+  },
+  "void-exchange": {
+    src: "/assets/void-exchange-screen-1440.webp",
+    srcSet:
+      "/assets/void-exchange-screen-768.webp 768w, /assets/void-exchange-screen-1440.webp 1440w",
+    sizes: "(min-width: 768px) 50vw, 100vw",
+    width: 1440,
+    height: 715,
+  },
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* ── HERO ────────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr] border-b-4 border-(--fg)">
-        {/* Left: name + title + links */}
         <div className="p-8 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-(--fg) flex flex-col justify-between gap-8">
           <div>
             <h1 className="font-display leading-none uppercase text-[15vw] md:text-[11vw]">
@@ -22,19 +86,10 @@ export default function Home() {
               ))}
             </h1>
             <p className="font-heading text-xl md:text-2xl uppercase tracking-widest mt-4 min-h-7 md:min-h-8">
-              <Typewriter
-                options={{
-                  strings: [profile.occupation],
-                  loop: false,
-                  speed: 50,
-                  lifeLike: false,
-                  cursor: false,
-                }}
-              />
+              <Typewriter text={profile.occupation} />
             </p>
           </div>
 
-          {/* Social links — filled buttons */}
           <div className="flex flex-wrap gap-3">
             {profile.links.map((link) => (
               <a
@@ -50,28 +105,29 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right: photo */}
         <div className="relative min-h-[85vw] md:min-h-0 overflow-hidden photo-duotone">
-          <Image
-            src={pic}
-            alt="Adam Rosołowski"
-            fill
-            className="object-cover object-center"
-            priority
+          <img
+            src={heroImage.src}
+            srcSet={heroImage.srcSet}
+            sizes={heroImage.sizes}
+            alt={profile.name}
+            width={heroImage.width}
+            height={heroImage.height}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center"
           />
         </div>
       </section>
 
-      {/* ── ABOUT ───────────────────────────────────────────────── */}
       <section className="grid grid-cols-1 md:grid-cols-[1fr_3fr] border-b-4 border-(--fg)">
-        {/* Left: label */}
         <div className="p-8 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-(--fg) flex items-center">
           <span className="font-display text-6xl md:text-8xl text-brand leading-none">
             ABOUT
           </span>
         </div>
 
-        {/* Right: bio */}
         <div className="p-8 md:p-16 flex items-center">
           <p className="font-heading text-xl md:text-2xl tracking-wide leading-snug max-w-prose uppercase">
             {profile.bio}
@@ -79,7 +135,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STACK ───────────────────────────────────────────────── */}
       <section className="border-b-4 border-(--fg)">
         <div className="p-8 md:p-16 border-b-4 border-(--fg)">
           <h2 className="font-display text-6xl md:text-8xl leading-none">
@@ -98,7 +153,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROJECTS ────────────────────────────────────────────── */}
       <section className="border-b-4 border-(--fg)">
         <div className="p-8 md:p-16 border-b-4 border-(--fg)">
           <h2 className="font-display text-6xl md:text-8xl leading-none">
@@ -106,87 +160,89 @@ export default function Home() {
           </h2>
         </div>
         <div className="relative grid grid-cols-1 md:grid-cols-2">
-          {/* Column separator — absolutely positioned so it doesn't affect card widths */}
           <div className="hidden md:block absolute inset-y-0 left-1/2 w-1 bg-(--fg) z-10" />
-          {projects.map((project, i) => (
-            <div
-              key={project.id}
-              className="border-b-4 border-(--fg)"
-            >
-              {/* Screenshot */}
-              <div className="aspect-video border-b-4 border-(--fg) relative overflow-hidden bg-neutral-900">
-                {project.screenshot ? (
-                  <Image
-                    src={project.screenshot}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="flex items-center justify-center h-full text-neutral-700">
-                    <span className="font-display text-4xl md:text-6xl">
-                      SCREENSHOT
-                    </span>
-                  </div>
-                )}
-              </div>
+          {projects.map((project, i) => {
+            const projectImage = project.screenshot ? projectImages[project.id] : undefined;
 
-              {/* Info */}
-              <div className="p-8">
-                <h3 className="font-display text-4xl md:text-5xl mb-3">
-                  <span className="text-brand">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  . {project.title}
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.links.map((link, i) => (
-                    <a
-                      key={link.url + i}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block bg-(--fg) text-(--bg) border-2 border-(--fg) px-4 py-2 font-heading uppercase tracking-widest text-sm hover:bg-brand hover:border-brand hover:text-black"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-                <p className="text-sm font-mono mb-4 opacity-70 max-w-sm">
-                  {project.description}
-                </p>
-                {project.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="border border-(--fg) px-2 py-0.5 font-heading uppercase text-xs tracking-wider opacity-60"
-                      >
-                        {tag}
+            return (
+              <div key={project.id} className="border-b-4 border-(--fg)">
+                <div className="aspect-video border-b-4 border-(--fg) relative overflow-hidden bg-neutral-900">
+                  {projectImage ? (
+                    <img
+                      src={projectImage.src}
+                      srcSet={projectImage.srcSet}
+                      sizes={projectImage.sizes}
+                      alt={project.title}
+                      width={projectImage.width}
+                      height={projectImage.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center h-full text-neutral-700">
+                      <span className="font-display text-4xl md:text-6xl">
+                        SCREENSHOT
                       </span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-8">
+                  <h3 className="font-display text-4xl md:text-5xl mb-3">
+                    <span className="text-brand">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    . {project.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.links.map((link, index) => (
+                      <a
+                        key={link.url + index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-(--fg) text-(--bg) border-2 border-(--fg) px-4 py-2 font-heading uppercase tracking-widest text-sm hover:bg-brand hover:border-brand hover:text-black"
+                      >
+                        {link.label}
+                      </a>
                     ))}
                   </div>
-                )}
+                  <p className="text-sm font-mono mb-4 opacity-70 max-w-sm">
+                    {project.description}
+                  </p>
+                  {project.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border border-(--fg) px-2 py-0.5 font-heading uppercase text-xs tracking-wider opacity-60"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           {projects.length % 2 !== 0 && (
             <div className="hidden md:flex items-center justify-center p-16">
               <span className="font-display text-5xl xl:text-7xl leading-none uppercase opacity-10 select-none text-center">
-                THE NEXT<br />BIG THING
+                THE NEXT
+                <br />
+                BIG THING
               </span>
             </div>
           )}
         </div>
       </section>
-      {/* ── FOOTER ──────────────────────────────────────────────── */}
+
       <footer className="border-t-4 border-(--fg) relative overflow-hidden">
         <div className="px-8 md:px-16 py-10 md:py-14 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="flex flex-col gap-3">
-            <Link
-              href="/"
-              className="font-display text-5xl md:text-7xl leading-none"
-            >
+            <Link href="/" className="font-display text-5xl md:text-7xl leading-none">
               ROSOLOWSKI
               <span className="text-brand">.DEV</span>
             </Link>
@@ -205,7 +261,7 @@ export default function Home() {
             </div>
           </div>
           <span className="font-mono text-xs opacity-30 uppercase tracking-widest">
-            {new Date().getFullYear()} Adam Rosołowski
+            {new Date().getFullYear()} {profile.name}
           </span>
         </div>
         <span className="font-display text-brand leading-none select-none pointer-events-none absolute bottom-0 right-4 text-[28vw] md:text-[13vw] opacity-[0.08]">
