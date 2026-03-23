@@ -97,6 +97,7 @@ export default function Home() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${link.label} (opens in new tab)`}
                 className="bg-(--fg) text-(--bg) border-2 border-(--fg) px-4 py-2 font-heading uppercase tracking-widest text-sm hover:bg-brand hover:border-brand hover:text-black"
               >
                 {link.label}
@@ -253,6 +254,7 @@ export default function Home() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${link.label} (opens in new tab)`}
                   className="font-heading uppercase tracking-widest text-sm opacity-50 hover:opacity-100 hover:text-brand"
                 >
                   {link.label}
