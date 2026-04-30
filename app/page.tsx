@@ -69,6 +69,14 @@ const projectImages: Record<string, ResponsiveImage> = {
     width: 1440,
     height: 715,
   },
+  numtastic: {
+    src: "/assets/numtastic-screen-1440.webp",
+    srcSet:
+      "/assets/numtastic-screen-768.webp 768w, /assets/numtastic-screen-1440.webp 1440w",
+    sizes: "(min-width: 768px) 50vw, 100vw",
+    width: 1440,
+    height: 715,
+  },
 };
 
 export default function Home() {
@@ -163,7 +171,9 @@ export default function Home() {
         <div className="relative grid grid-cols-1 md:grid-cols-2">
           <div className="hidden md:block absolute inset-y-0 left-1/2 w-1 bg-(--fg) z-10" />
           {projects.map((project, i) => {
-            const projectImage = project.screenshot ? projectImages[project.id] : undefined;
+            const projectImage = project.screenshot
+              ? projectImages[project.id]
+              : undefined;
 
             return (
               <div key={project.id} className="border-b-4 border-(--fg)">
@@ -243,7 +253,10 @@ export default function Home() {
       <footer className="border-t-4 border-(--fg) relative overflow-hidden">
         <div className="px-8 md:px-16 py-10 md:py-14 relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="flex flex-col gap-3">
-            <Link href="/" className="font-display text-5xl md:text-7xl leading-none">
+            <Link
+              href="/"
+              className="font-display text-5xl md:text-7xl leading-none"
+            >
               ROSOLOWSKI
               <span className="text-brand">.DEV</span>
             </Link>

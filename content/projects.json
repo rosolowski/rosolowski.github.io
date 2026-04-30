@@ -13,6 +13,19 @@
     "tags": ["Nest.js", "SvelteKit", "WebSocket", "Docker"]
   },
   {
+    "id": "numtastic",
+    "title": "Numtastic",
+    "description": "Mental math training app with firebase auth, daily streak, learning recommendations.",
+    "links": [
+      {
+        "label": "OPEN >>>",
+        "url": "https://www.numtastic.com/"
+      }
+    ],
+    "screenshot": "/assets/numtastic-screen.png",
+    "tags": ["Next", "Firebase"]
+  },
+  {
     "id": "ether-empires",
     "title": "ETHER EMPIRES",
     "description": "Web3 strategy game where each player colony is a separate smart contract. Build colonies, manage resources, train units, and engage in PvP combat. Features artwork made with stable diffusion.",
