@@ -1,9 +1,15 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/lib/theme";
 
 export default function ThemeToggle() {
   const { theme, toggle } = useTheme();
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/steel-protocol")) {
+    return null;
+  }
 
   return (
     <button

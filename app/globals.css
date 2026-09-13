@@ -39,6 +39,25 @@ body {
   font-size: smaller;
 }
 
+.steel-protocol-page {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: #060b17;
+}
+
+.steel-protocol-page canvas {
+  display: block;
+  touch-action: none;
+}
+
 /* ── Animations ─────────────────────────────────────────────── */
 
 @keyframes boxShadow {
