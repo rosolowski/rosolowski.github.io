@@ -1,0 +1,14 @@
+# Default: let Git normalize text files in the repo.
+* text=auto
+
+# Prebuilt bundles are committed as build output, not source. Line-ending
+# rewriting can change behaviour inside minified template literals, so keep
+# these byte-for-byte identical to what the build produced.
+public/steel-protocol/assets/*.js -text
+public/steel-protocol/assets/*.css -text
+
+# Binary media - never touch.
+*.m4a binary
+*.mp3 binary
+*.wav binary
+*.ogg binary
